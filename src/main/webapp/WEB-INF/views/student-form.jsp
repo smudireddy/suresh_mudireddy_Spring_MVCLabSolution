@@ -11,12 +11,33 @@
 	<body>
 		<h3>Student Form for ${mode}</h3>
 		<form method="POST" action="save">
-	   		<input type="hidden" name="Id" value="${student.id}" />
-	   		<input type="text" name="firstName" value="${student.firstName}" placeholder="First Name" />
-	   		<input type="text" name="lastName" value="${student.lastName}" placeholder="Last Name" />
-	   		<input type="text" name="course" value="${student.course}" placeholder="Course" />
-	   		<input type="text" name="country" value="${student.country}" placeholder="Country" />
+			<table>
+				<tr>
+				    <td><label>Student Id: </label></td>
+	   				<td><input type="hidden" name="studentId" value="${student.id}" /></td>
+	   			</tr>	
+	   			<tr>
+	   			    <td><label>First Name: </label></td>
+	   				<td><input type="text" name="firstName" value="${student.firstName}" /></td>
+	   			</tr>
+	   		
+	   			<tr>
+	   			    <td><label>Last Name: </label></td>
+	   				<td><input type="text" name="lastName" value="${student.lastName}" /></td>
+	   			</tr>
+	   			<tr>
+	   			    <td><label>Course: </label></td>
+	   				<td><input type="text" name="course" value="${student.course}" /></td>
+	   			</tr>
+	   			<tr>
+	   			    <td><label>Country: </label></td>
+	   			    <td><input type="text" name="country" value="${student.country}" /></td>
+	   			</tr>
+	   		</table>
+	   		<button type="submit">Register</button>
 		</form>
-		<a href="students">Back to Students List</a>
+		<br>
+		<h3><a href="students">Back to Students List</a></h3>
+		
 	</body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dineshonjava.bean.EmployeeBean;
@@ -36,12 +37,19 @@ public class StudentMgmtController {
 		return "studentslist";
     }
     
-    /*
-    @PostMapping(value = "/save")
-	public ModelAndView saveStudent(@Model model, Student student) {
-		Employee employee = prepareModel(employeeBean);
-		employeeService.addEmployee(employee);
-		return new ModelAndView("redirect:/add.html");
+	@GetMapping("/showFormForRegister")
+	public String showFormForRegister(Model model) {
+		model.addAttribute("student", new Student());
+		model.addAttribute("mode", "Register");
+		return "student-form";
 	}
-	*/
+	
+	@GetMapping("/showFormToUpdate")
+	public String showFormToUpdate(@RequestParam("studentId") int studentId, Model model) {
+		
+		Student student = studentMgmtService.getStudentById(studentId);
+		model.addAttribute("student", student);
+		model.addAttribute("mode", "Update");
+		return "student-form";
+	}
 }
