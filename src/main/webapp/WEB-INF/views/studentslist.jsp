@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +18,7 @@
 			<th>Student Last Name</th>
 			<th>Student Course Name</th>
 			<th>Student Country</th>
+			<th>Actions </th>
 		</tr>
 
 		<c:forEach items="${studentlist}" var="student">
@@ -27,6 +28,7 @@
 				<td><c:out value="${student.lastName}"/></td>
 				<td><c:out value="${student.course}"/></td>
 				<td><c:out value="${student.country}"/></td>
+				<td align="center"><a href="edit.html?id=${student.id}">Edit</a> | <a href="delete.html?id=${student.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
