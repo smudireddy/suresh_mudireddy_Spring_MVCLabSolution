@@ -58,13 +58,15 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public void addStudent(Student theStudent) {
 		
-		session.persist(theStudent);
+		System.out.println("Adding the student : " + theStudent);
+		session.save(theStudent);
 		//logger.info("Student saved successfully, Student Details -> {}", theStudent);
 	}
 
 	@Override
 	public void updateStudent(Student theStudent) {
 		
+		System.out.println("Updating the student : " + theStudent);
 		session.update(theStudent);
 		//logger.info("Student updated successfully, Student Details -> {}", theStudent);
 	}

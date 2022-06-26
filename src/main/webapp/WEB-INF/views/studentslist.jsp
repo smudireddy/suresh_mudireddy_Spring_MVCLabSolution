@@ -28,7 +28,7 @@
 				<td><c:out value="${student.lastName}"/></td>
 				<td><c:out value="${student.course}"/></td>
 				<td><c:out value="${student.country}"/></td>
-				<td align="center"><a href="showFormToUpdate?studentId=${student.id}">Edit</a> | <a href="delete?studentId=${student.id}" onclick="if (!confirm('Are you sure you want to un-register the student?'))">Delete</a></td>
+				<td align="center"><a href="showFormToUpdate?studentId=${student.id}">Edit</a> | <a href="unregister?studentId=${student.id}" onclick="if (!confirm('Are you sure you want to un-register the student?'))">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

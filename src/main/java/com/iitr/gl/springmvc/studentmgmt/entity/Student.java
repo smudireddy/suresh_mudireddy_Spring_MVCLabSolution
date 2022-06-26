@@ -40,6 +40,15 @@ public class Student {
 		this.course = course;
 		this.country = country;
 	}
+	
+	public Student(String firstName, String lastName, String course, String country) {
+		super();
+		this.id = 0;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.course = course;
+		this.country = country;
+	}
 
 	public int getId() {
 		return id;

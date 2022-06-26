@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<h3>Student Form for ${mode}</h3>
-		<form method="POST" action="save">
+		<form method="POST" action="registerStudent">
 			<table>
 				<tr>
 				    <td><label>Student Id: </label></td>

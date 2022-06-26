@@ -52,4 +52,41 @@ public class StudentMgmtController {
 		model.addAttribute("mode", "Update");
 		return "student-form";
 	}
+	
+	@PostMapping("/registerStudent")
+	public String registerStudent(@RequestParam("studentId") int studentId, @RequestParam("firstName") String firstName, 
+			@RequestParam("lastName") String lastName, @RequestParam("course") String course, @RequestParam("country") String country) {
+		
+		Student student = null;
+		if (studentId == 0) {
+			
+			student = new Student(firstName, lastName, course, country);
+			studentMgmtService.addStudent(student);
+		} else {
+			student = studentMgmtService.getStudentById(studentId);
+			if(student != null) {
+				
+				student.setCountry(country);
+				student.setCourse(course);
+				student.setFirstName(firstName);
+				student.setLastName(lastName);
+				studentMgmtService.updateStudent(student);
+			}
+		}
+		return null;
+	}
+	
+	@PostMapping("/unregister")
+	public String unregister(@RequestParam("studentId") int studentId, Model model) {
+		
+		Student student = studentMgmtService.getStudentById(studentId);
+		if (student != null) {
+			
+			studentMgmtService.removeStudentById(studentId);
+			model.addAttribute("studentlist", this.studentMgmtService.listStudents());
+			return "studentslist";
+		}
+		return null;
+	}
+	
 }
