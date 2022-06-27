@@ -15,4 +15,5 @@ public class WelcomeController {
 	public String showWelcomePage() {
 		return "welcome";
 	}
+	
 }

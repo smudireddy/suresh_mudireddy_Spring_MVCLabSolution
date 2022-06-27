@@ -87,12 +87,8 @@ public class StudentMgmtController {
 	@GetMapping("/unregister")
 	public String unregister(@RequestParam("studentId") int studentId, Model model) {
 		
-		System.out.println("--------->" + " " + studentId + " " +  model);
-		
 		Student student = studentMgmtService.getStudentById(studentId);
 		if (student != null) {
-			
-			System.out.println("<--------->");
 			
 			studentMgmtService.removeStudentById(studentId);
 			model.addAttribute("studentlist", this.studentMgmtService.listStudents());
@@ -100,5 +96,10 @@ public class StudentMgmtController {
 		}
 		return null;
 	}
+	
+	@GetMapping("/welcome")
+	public String showWelcomePage(Model model) {
+    	return "welcome";
+    }
 	
 }
