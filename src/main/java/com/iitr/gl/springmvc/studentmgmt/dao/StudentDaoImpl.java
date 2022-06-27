@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
@@ -73,10 +74,21 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public void removeStudentById(int studentId) {
-
+		
 		Student student = session.get(Student.class, studentId);
 		if (student != null) {
-			session.delete(student);
+	
+			Transaction tx = session.beginTransaction();
+			
+			try {
+				
+				session.createQuery("DELETE FROM Student WHERE id = "+studentId).executeUpdate();
+				tx.commit();
+			} catch (Exception e) {
+				tx.rollback();
+				e.printStackTrace();
+			}
+			
 			//logger.info("Student entitty with id {} removed successfully", studentId);
 		} else {
 			//logger.info("Student entitty with id {} not available", studentId);

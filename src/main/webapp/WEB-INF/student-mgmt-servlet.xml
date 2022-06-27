@@ -19,7 +19,10 @@
 	<context:component-scan
 		base-package="com.iitr.gl.springmvc.studentmgmt"></context:component-scan>
 		
-	<mvc:annotation-driven />	
+	<mvc:annotation-driven />
+	
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />	
 	
 	<!-- Define Spring MVC view resolver -->
 	<bean
@@ -61,9 +64,6 @@
 		class="com.iitr.gl.springmvc.studentmgmt.serviceimpl.StudentMgmtServiceImpl">
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
