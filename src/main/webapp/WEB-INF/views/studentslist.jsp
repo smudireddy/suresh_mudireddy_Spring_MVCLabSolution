@@ -15,18 +15,18 @@ caption {
 <body>
 	<h3>College Festival - Student Registrations</h3>
 	
-	<h3 align="center"><a href="welcome">Home</a></h3>
+	<h3 align="left"><a href="welcome">Home</a></h3>
 	
 	<c:if test="${!empty studentlist}">
-		<table border="1">
+		<table align="center" border="1">
 			<caption>Registered Students</caption>
 			<tr>
-				<th>ID</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Course Name</th>
-				<th>Country</th>
-				<th>Actions</th>
+				<th>Student ID</th>
+				<th>Student First Name	</th>
+				<th>Student Last Name	</th>
+				<th>Student Course Name	</th>
+				<th>Student Country	</th>
+				<th>Student Actions	</th>
 			</tr>
 
 			<c:forEach items="${studentlist}" var="student">
