@@ -21,56 +21,53 @@ import com.iitr.gl.springmvc.studentmgmt.service.StudentMgmtService;
 
 @Controller
 public class StudentMgmtController {
-	
+
 	private StudentMgmtService studentMgmtService;
 
-	@Autowired(required=true)
+	@Autowired(required = true)
 	public StudentMgmtController(@Qualifier("studentMgmtService") StudentMgmtService studentMgmtService) {
 		super();
 		this.studentMgmtService = studentMgmtService;
 	}
-	
-    @GetMapping("/students")
+
+	@GetMapping("/students")
 	public String listStudents(Model model) {
-    	
-    	model.addAttribute("student", new Student());
+
+		model.addAttribute("student", new Student());
 		model.addAttribute("studentlist", this.studentMgmtService.listStudents());
 		return "studentslist";
-    }
-    
+	}
+
 	@GetMapping("/showFormForRegister")
 	public String showFormForRegister(Model model) {
 		model.addAttribute("student", new Student());
 		model.addAttribute("mode", "Register");
 		return "student-form";
 	}
-	
+
 	@GetMapping("/showFormToUpdate")
 	public String showFormToUpdate(@RequestParam("studentId") int studentId, Model model) {
-		
+
 		Student student = studentMgmtService.getStudentById(studentId);
 		model.addAttribute("student", student);
 		model.addAttribute("mode", "Update");
 		return "student-form";
 	}
-	
+
 	@PostMapping("/registerStudent")
-	public String registerStudent(@RequestParam("studentId") int studentId, 
-			@RequestParam("firstName") String firstName, 
-			@RequestParam("lastName") String lastName, 
-			@RequestParam("course") String course,
-			@RequestParam("country") String country, 
-			Model model) {
-		
+	public String registerStudent(@RequestParam("studentId") int studentId, @RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName, @RequestParam("course") String course,
+			@RequestParam("country") String country, Model model) {
+
 		Student student = null;
 		if (studentId == 0) {
 			student = new Student(firstName, lastName, course, country);
 			studentMgmtService.addStudent(student);
-			
+
 		} else {
 			student = studentMgmtService.getStudentById(studentId);
-			if(student != null) {
-				
+			if (student != null) {
+
 				student.setCountry(country);
 				student.setCourse(course);
 				student.setFirstName(firstName);
@@ -78,28 +75,28 @@ public class StudentMgmtController {
 				studentMgmtService.updateStudent(student);
 			}
 		}
-		
+
 		model.addAttribute("student", student);
 		model.addAttribute("mode", "Update");
 		return "student-form";
 	}
-	
+
 	@GetMapping("/unregister")
 	public String unregister(@RequestParam("studentId") int studentId, Model model) {
-		
+
 		Student student = studentMgmtService.getStudentById(studentId);
 		if (student != null) {
-			
+
 			studentMgmtService.removeStudentById(studentId);
 			model.addAttribute("studentlist", this.studentMgmtService.listStudents());
 			return "studentslist";
 		}
 		return null;
 	}
-	
+
 	@GetMapping("/welcome")
 	public String showWelcomePage(Model model) {
-    	return "welcome";
-    }
-	
+		return "welcome";
+	}
+
 }

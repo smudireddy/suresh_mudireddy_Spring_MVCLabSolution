@@ -8,28 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="course_name")
+
+	@Column(name = "course_name")
 	private String course;
-	
-	@Column(name="home_country")
+
+	@Column(name = "home_country")
 	private String country;
 
 	public Student() {
-		
+
 	}
 
 	public Student(int id, String firstName, String lastName, String course, String country) {
@@ -40,7 +40,7 @@ public class Student {
 		this.course = course;
 		this.country = country;
 	}
-	
+
 	public Student(String firstName, String lastName, String course, String country) {
 		super();
 		this.id = 0;

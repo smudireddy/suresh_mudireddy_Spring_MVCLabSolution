@@ -9,7 +9,7 @@
 <body>
 	<h2>College Festival - Student Management</h2>
 	<h3>
-		<a href="students">Registered Students</a>
+		<a href="students">Registrations</a>
 	</h3>
 </body>
 </html>
