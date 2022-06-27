@@ -13,7 +13,7 @@
 	<form method="POST" action="registerStudent">
 		<table>
 			<tr>
-				<td><label>Student Id: </label></td>
+				<td><label>Student ID: </label></td>
 				<td><input type="text" name="studentId" value="${student.id}"
 					readonly /></td>
 			</tr>
